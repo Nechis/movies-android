@@ -4,17 +4,12 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
-@Entity(tableName = "movie_table")
-data class Movie (
+@Entity(tableName = "category_table")
+data class Category (
     @PrimaryKey(autoGenerate = false)
     var id: Int,
     @NonNull
-    var poster_path: String,
-    @NonNull
-    var original_title: String,
-    @NonNull
-    var title: String,
-    @NonNull
-    var overview: String
+    var category: String
 )

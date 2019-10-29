@@ -8,13 +8,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.leinaro.peiky.movies.Models.Movie
+import com.leinaro.peiky.movies.MoviesApplication
 import com.leinaro.peiky.movies.Services.Repository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class PopularMoviesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: Repository = Repository()
+    private val repository: Repository = Repository(application = application as MoviesApplication)
 
     val movies: MutableLiveData<List<Movie>> = MutableLiveData()
 
