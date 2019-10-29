@@ -15,12 +15,11 @@ import com.leinaro.peiky.movies.ui.dummy.DummyContent.DummyItem
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
+ * [RecyclerView.Adapter] that can display a [Movie] and makes a call to the
  * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
  */
 class MovieRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
+    private var mValues: List<Movie>,
     private val mListener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder>() {
 
@@ -43,8 +42,8 @@ class MovieRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        holder.mIdView.text = item.id.toString()
+        holder.mContentView.text = item.title
 
         with(holder.mView) {
             tag = item
@@ -53,6 +52,11 @@ class MovieRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int = mValues.size
+
+    fun setMovies(movies: List<Movie>) {
+        this.mValues = movies
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val mIdView: TextView = mView.item_number

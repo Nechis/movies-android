@@ -1,6 +1,7 @@
 package com.leinaro.peiky.movies
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -13,6 +14,7 @@ import com.leinaro.peiky.movies.ui.MovieFragment
 class MainActivity : AppCompatActivity(), MovieFragment.OnListFragmentInteractionListener {
     override fun onListFragmentInteraction(movie: Movie?) {
         //TODO Open movie detail
+        Log.e("iarl", "click "+movie?.title)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

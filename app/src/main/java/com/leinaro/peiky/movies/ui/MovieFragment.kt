@@ -23,9 +23,12 @@ import com.leinaro.peiky.movies.ui.dummy.DummyContent.DummyItem
  */
 open class MovieFragment : Fragment() {
 
-    private var columnCount = 2
+
+    private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+
+    lateinit var viewAdapter: MovieRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,7 @@ open class MovieFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_movie_list, container, false)
 
+        viewAdapter = MovieRecyclerViewAdapter(listOf(), listener)
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -50,7 +54,7 @@ open class MovieFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MovieRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = viewAdapter
             }
         }
         return view

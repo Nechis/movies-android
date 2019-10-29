@@ -1,6 +1,7 @@
 package com.leinaro.peiky.movies.ui.popular
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,12 +20,13 @@ class PopularMoviesFragment : MovieFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
-     //   val textView: TextView = root.findViewById(R.id.text_home)
 
         popularMoviesViewModel =
             ViewModelProviders.of(this).get(PopularMoviesViewModel::class.java)
-        popularMoviesViewModel.text.observe(this, Observer {
-          //  textView.text = it
+        popularMoviesViewModel.movies.observe(this, Observer {
+          it?.let {
+              viewAdapter.setMovies(it)
+          }
         })
         return root
     }

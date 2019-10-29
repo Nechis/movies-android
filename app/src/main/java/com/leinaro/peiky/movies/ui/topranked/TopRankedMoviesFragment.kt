@@ -21,9 +21,10 @@ class TopRankedMoviesFragment : MovieFragment() {
 
         topRankedMoviesViewModel =
                 ViewModelProviders.of(this).get(TopRankedMoviesViewModel::class.java)
-    //    val textView: TextView = root.findViewById(R.id.text_dashboard)
-        topRankedMoviesViewModel.text.observe(this, Observer {
-         //   textView.text = it
+        topRankedMoviesViewModel.movies.observe(this, Observer {
+            it?.let {
+                viewAdapter.setMovies(it)
+            }
         })
         return root
     }

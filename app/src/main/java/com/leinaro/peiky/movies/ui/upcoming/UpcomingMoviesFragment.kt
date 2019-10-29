@@ -22,8 +22,10 @@ class UpcomingMoviesFragment : MovieFragment() {
         upcomingMoviesViewModel =
                 ViewModelProviders.of(this).get(UpcomingMoviesViewModel::class.java)
 //        val textView: TextView = root.findViewById(R.id.text_notifications)
-        upcomingMoviesViewModel.text.observe(this, Observer {
-  //          textView.text = it
+        upcomingMoviesViewModel.movies.observe(this, Observer {
+            it?.let {
+                viewAdapter.setMovies(it)
+            }
         })
         return root
     }
