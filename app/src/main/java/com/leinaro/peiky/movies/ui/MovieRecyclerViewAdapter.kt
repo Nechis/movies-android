@@ -4,13 +4,14 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.leinaro.peiky.movies.Models.Movie
 import com.leinaro.peiky.movies.R
 
 
 import com.leinaro.peiky.movies.ui.MovieFragment.OnListFragmentInteractionListener
-import com.leinaro.peiky.movies.ui.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 
@@ -41,12 +42,15 @@ class MovieRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
-        holder.mIdView.text = item.id.toString()
-        holder.mContentView.text = item.title
+        val movie = mValues[position]
+        holder.mTitleView.text = movie.title
+        holder.mOverviewView.text = movie.overview
+        Glide.with(holder.mImageView.context)
+            .load("https://image.tmdb.org/t/p/w500${movie.poster_path}")
+            .into(holder.mImageView)
 
         with(holder.mView) {
-            tag = item
+            tag = movie
             setOnClickListener(mOnClickListener)
         }
     }
@@ -59,11 +63,12 @@ class MovieRecyclerViewAdapter(
     }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+        val mTitleView: TextView = mView.title
+        val mOverviewView: TextView = mView.overview
+        val mImageView: ImageView = mView.image
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '" + mOverviewView.text + "'"
         }
     }
 }
