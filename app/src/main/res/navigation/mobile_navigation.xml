@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_popular">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.leinaro.peiky.movies.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_popular"
+        android:name="com.leinaro.peiky.movies.ui.popular.PopularMoviesFragment"
+        android:label="@string/title_popular"
+        tools:layout="@layout/fragment_movie_list" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.leinaro.peiky.movies.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_top_ranked"
+        android:name="com.leinaro.peiky.movies.ui.topranked.TopRankedMoviesFragment"
+        android:label="@string/title_top_ranked"
+        tools:layout="@layout/fragment_movie_list" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.leinaro.peiky.movies.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_upcoming"
+        android:name="com.leinaro.peiky.movies.ui.upcoming.UpcomingMoviesFragment"
+        android:label="@string/title_upcoming"
+        tools:layout="@layout/fragment_movie_list" />
 </navigation>

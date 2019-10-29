@@ -1,10 +1,10 @@
-package com.leinaro.peiky.movies.ui.notifications
+package com.leinaro.peiky.movies.ui.upcoming
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class UpcomingMoviesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
